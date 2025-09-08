@@ -1,0 +1,22 @@
+<div class="group flex items-center gap-6 p-6 hover:bg-gradient-to-r hover:from-secondary/30 hover:to-primary/5 rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-[1.02] border border-border/20 hover:border-primary/30 backdrop-blur-sm">
+  <div class="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/10 to-primary/20 group-hover:from-primary/20 group-hover:to-primary/30 transition-all duration-300 shadow-md">
+    <% if project.image_path && project.image_path != "/placeholder.svg" %>
+      <%= image_tag project.image_path, alt: project.title, class: "h-16 w-16 object-cover" %>
+    <% else %>
+      <div class="p-4">
+        <!-- Folder icon replacement - using Unicode for now -->
+        <div class="h-8 w-8 text-primary flex-shrink-0 text-2xl">📁</div>
+      </div>
+    <% end %>
+  </div>
+  
+  <div class="flex-1 space-y-2">
+    <p class="text-muted-foreground text-base leading-relaxed"><%= project.description %></p>
+    <%= link_to project.url, target: "_blank", rel: "noopener noreferrer", 
+        class: "text-foreground hover:text-primary transition-colors duration-200 flex items-center gap-2 font-semibold text-lg group-hover:gap-3" do %>
+      <%= project.title %>
+      <!-- External link icon replacement - using Unicode for now -->
+      <span class="opacity-70 group-hover:opacity-100 transition-all duration-200">↗</span>
+    <% end %>
+  </div>
+</div>
